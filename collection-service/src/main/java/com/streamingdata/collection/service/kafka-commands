@@ -1,0 +1,30 @@
+wget http://wwww-us.apache.org/dist/kafka/0.10.2.0/kafka_2.11-0.10.2.0.tgz
+tar -xvf kafka_2.11-0.10.0.1.tgz
+
+cd /home/qa/Desktop/1/kafka_2.11-0.10.2.0/
+1) start zookeeper
+bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+
+2) start server = create broker
+bin/kafka-server-start.sh -daemon config/server.properties
+
+3) create theme
+
+bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic meetup-raw-rsvp --partitions 1 --replication-factor 1
+./bin/kafka-topics.sh --create --topic meetup-raw-rsvp --zookeeper localhost:2181 --partitions 1 --replication-factor 1
+
+4) check theme
+bin/kafka-topics.sh --zookeeper localhost:2181 --list
+
+
+
+
+
+1) Download the 2.0.0 release and un-tar it.
+  tar -xzf kafka_2.11-2.0.0.tgz
+  cd kafka_2.11-2.0.0
+2) Step 2: Start the server
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
+
+3)  bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic meetup-raw-rsvp
