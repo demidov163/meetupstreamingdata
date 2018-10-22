@@ -13,7 +13,7 @@ import org.apache.storm.utils.TupleUtils;
 
 import java.util.Map;
 
-public class RollingGroupCountBolt extends BaseRichBolt {
+public final class RollingGroupCountBolt extends BaseRichBolt {
     private static final long serialVersionUID = 7287392308497261309L;
     private static final int NUM_WINDOW_CHUNKS = 5;
     private static final int DEFAULT_SLIDING_WINDOW_IN_SECONDS = NUM_WINDOW_CHUNKS * 60;

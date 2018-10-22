@@ -13,7 +13,7 @@ import org.apache.storm.tuple.Values;
 import java.io.IOException;
 import java.util.Map;
 
-public class MeetUpGroupSplitBolt extends BaseRichBolt{
+public final class MeetUpGroupSplitBolt extends BaseRichBolt{
     private static final ObjectMapper objectMapper = new ObjectMapper();
     private OutputCollector collector;
 

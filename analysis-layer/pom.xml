@@ -11,7 +11,7 @@
     <artifactId>analysis-layer</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <storm.version>1.0.2</storm.version>
+        <storm.version>1.2.2<!--1.0.2--></storm.version>
         <jackson.version>2.7.1</jackson.version>
         <main.class>com.streamingdata.analysis.TopMeetupTopicsTopology</main.class>
         <storm.kafka.client.version>0.9.0.1</storm.kafka.client.version>
@@ -64,7 +64,6 @@
         <testSourceDirectory>src/test/java</testSourceDirectory>
 
         <plugins>
-
             <!-- the Maven compiler plugin will compile Java source files -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
