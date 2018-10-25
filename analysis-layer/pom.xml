@@ -11,16 +11,22 @@
     <artifactId>analysis-layer</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <storm.version>1.2.2<!--1.0.2--></storm.version>
+        <storm.version>2.0.0-SNAPSHOT<!--1.2.2--><!--1.0.2--></storm.version>
         <jackson.version>2.7.1</jackson.version>
         <main.class>com.streamingdata.analysis.TopMeetupTopicsTopology</main.class>
-        <storm.kafka.client.version>0.9.0.1</storm.kafka.client.version>
+        <storm.kafka.client.version>0.10.0.1</storm.kafka.client.version>
     </properties>
 
     <dependencies>
-        <dependency>
+<!--        <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-core</artifactId>
+            <version>${storm.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-client</artifactId>
             <version>${storm.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -29,16 +35,17 @@
             <artifactId>storm-starter</artifactId>
             <version>${storm.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.apache.storm</groupId>
             <artifactId>storm-kafka-client</artifactId>
-            <version>1.0.2</version>
+            <version>1.2.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${storm.kafka.client.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.clearspring.analytics</groupId>
@@ -50,7 +57,6 @@
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
-
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

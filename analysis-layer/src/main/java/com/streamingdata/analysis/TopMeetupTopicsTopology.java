@@ -1,27 +1,7 @@
 package com.streamingdata.analysis;
 
-import com.streamingdata.analysis.bolts.KafkaBolt;
-import com.streamingdata.analysis.bolts.MeetupRSVPSummaryBolt;
-import com.streamingdata.analysis.utils.TopicTupleBuilder;
-import org.apache.storm.Config;
-import org.apache.storm.LocalCluster;
-import org.apache.storm.StormSubmitter;
-import org.apache.storm.generated.AlreadyAliveException;
-import org.apache.storm.generated.AuthorizationException;
-import org.apache.storm.generated.InvalidTopologyException;
-import org.apache.storm.generated.StormTopology;
-import org.apache.storm.kafka.spout.*;
-import org.apache.storm.topology.TopologyBuilder;
-import org.apache.storm.tuple.Fields;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
-
 public class TopMeetupTopicsTopology {
-    private static final String TOPOLOGY_NAME = "TopMeetupTopics";
+    /*private static final String TOPOLOGY_NAME = "TopMeetupTopics";
     private static final String TOPIC_NAME = "meetup-raw-rsvps";
     private static final String STREAM_NAME = "meetup-rsvp-stream";
 
@@ -107,5 +87,5 @@ public class TopMeetupTopicsTopology {
             System.out.println("Running in remote (cluster) mode");
             topMeetupTopicsTopology.runRemotely();
         }
-    }
+    }*/
 }
