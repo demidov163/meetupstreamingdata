@@ -11,6 +11,7 @@
     <modules>
         <module>collection-service</module>
         <module>analysis-layer</module>
+        <module>analasis-layer-spark</module>
     </modules>
 
 

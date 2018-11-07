@@ -5,6 +5,7 @@ import org.apache.storm.tuple.Tuple;
 
 import java.util.List;
 
+@Deprecated
 public final class TotalRankingBolt extends AbstractRankingsBolt {
 
     @Override

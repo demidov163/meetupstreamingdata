@@ -20,25 +20,22 @@ import java.util.List;
 public class RankingStormTopologyProvider {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-    public static final FlatMapFunction<Pair<Object, String>, String> EXTRACT_GROUPS_FUNCTION = new FlatMapFunction<Pair<Object, String>, String>() {
-         @Override
-         public Iterable<String> apply(Pair<Object, String> objectObjectPair) {
-             List<String> topicNames = Lists.newArrayList();
-             try {
-                 JsonNode jsonMessage = objectMapper.readTree(objectObjectPair._2);
-                 JsonNode groupTopics = jsonMessage.get("group").get("group_topics");
-                 for (JsonNode groupTopic : groupTopics) {
-                     String topicName = groupTopic.get("topic_name").asText();
-                     if (StringUtils.isNotEmpty(topicName)) {
-                         topicNames.add(topicName);
-                     }
-                 }
-             } catch (IOException e) {
-                 e.printStackTrace();
-             }
-              return topicNames;
-         }
-     };
+    public static final FlatMapFunction<Pair<Object, String>, String> EXTRACT_GROUPS_FUNCTION = (FlatMapFunction<Pair<Object, String>, String>) objectObjectPair -> {
+        List<String> topicNames = Lists.newArrayList();
+        try {
+            JsonNode jsonMessage = objectMapper.readTree(objectObjectPair._2);
+            JsonNode groupTopics = jsonMessage.get("group").get("group_topics");
+            for (JsonNode groupTopic : groupTopics) {
+                String topicName = groupTopic.get("topic_name").asText();
+                if (StringUtils.isNotEmpty(topicName)) {
+                    topicNames.add(topicName);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         return topicNames;
+    };
     private KafkaSpoutFactory kafkaSpoutFactory;
 
     public RankingStormTopologyProvider() {
@@ -52,7 +49,6 @@ public class RankingStormTopologyProvider {
                 window(getKafkaWindow()).flatMap(EXTRACT_GROUPS_FUNCTION).
                 mapToPair(s -> Pair.of(s, 1)).
                 countByKey().to(new TotalRankingBolt());
-
 
         return builder.build();
     }
